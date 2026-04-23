@@ -1,0 +1,8 @@
+{
+  "name": "sichtbarlokal-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for Sichtbarlokal",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
