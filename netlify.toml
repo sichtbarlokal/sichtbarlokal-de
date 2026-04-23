@@ -5,19 +5,10 @@
   directory = "netlify/functions"
 
 [[redirects]]
-  from = "/ki-analyse-tool"
-  to = "/ki-analyse-tool/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/ki-analyse-tool/*"
-  to = "/ki-analyse-tool/:splat"
-  status = 200
-
-[[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 404
+  status = 200
+  force = false
 
 [[headers]]
   for = "/*"
