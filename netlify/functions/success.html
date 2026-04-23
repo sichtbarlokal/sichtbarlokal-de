@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zahlung erfolgreich | Sichtbar Lokal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f4f6f9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    color: #1a1a1a;
+  }
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .check { width: 72px; height: 72px; border-radius: 50%; background: #E1F5EE; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 32px; }
+  h1 { font-size: 24px; font-weight: 700; margin-bottom: 0.75rem; }
+  p { font-size: 15px; color: #6b7280; line-height: 1.6; margin-bottom: 1rem; }
+  .highlight { background: #E1F5EE; color: #0F6E56; padding: 1rem 1.25rem; border-radius: 10px; font-size: 14px; font-weight: 500; margin: 1.5rem 0; }
+  .steps { text-align: left; margin: 1.5rem 0; }
+  .step-item { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; background: #1D9E75; color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-text { font-size: 14px; color: #374151; line-height: 1.5; }
+  .btn { display: inline-block; padding: 12px 28px; background: #1D9E75; color: white; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; margin-top: 1rem; }
+  .btn:hover { background: #0F6E56; }
+  .order-id { font-size: 11px; color: #9ca3af; margin-top: 1.5rem; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="check">✓</div>
+  <h1>Zahlung erfolgreich!</h1>
+  <p>Vielen Dank für deine Bestellung. Dein personalisierter KI Local SEO Report ist unterwegs.</p>
+
+  <div class="highlight">
+    📧 Dein Report wird innerhalb von <strong>24 Stunden</strong> an deine E-Mail-Adresse gesendet.
+  </div>
+
+  <div class="steps">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text">Du erhältst eine Bestätigungs-E-Mail mit deiner Bestellnummer.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text">Unser Team erstellt deinen vollständigen PDF-Report mit allen Details und Schritt-für-Schritt-Anleitungen.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text">Du erhältst den Report als PDF per E-Mail – inklusive 30-Tage-Aktionsplan und Keyword-Empfehlungen.</div>
+    </div>
+  </div>
+
+  <a href="https://sichtbarlokal.de" class="btn">Zurück zur Startseite</a>
+  <p class="order-id" id="order-id"></p>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  if (sessionId) {
+    document.getElementById('order-id').textContent = 'Bestellnummer: ' + sessionId.slice(-12).toUpperCase();
+  }
+</script>
+</body>
+</html>
