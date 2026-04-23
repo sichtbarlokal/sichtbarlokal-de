@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog – Sichtbarlokal | Local SEO & Google My Business Tipps</title>
+  <meta name="description" content="Kostenlose Anleitungen, Strategien und Tipps zu Local SEO und Google My Business – für lokale Unternehmer in Deutschland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav class="nav scrolled" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="../" class="nav-logo">
+      <div class="nav-logo-icon" aria-hidden="true">📍</div>
+      <span class="nav-logo-name">Sichtbar<span>lokal</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../#leistungen">Leistungen</a>
+      <a href="../tool/">KI-Analyse-Tool</a>
+      <a href="../#produkte">Produkte</a>
+      <a href="./" class="active">Blog</a>
+      <a href="../#kontakt">Kontakt</a>
+    </div>
+    <div class="nav-cta">
+      <a href="../#kontakt" class="btn btn-primary btn-sm">Kostenlose Analyse</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="../#leistungen">Leistungen</a>
+  <a href="../tool/">KI-Analyse-Tool</a>
+  <a href="../#produkte">Produkte</a>
+  <a href="./">Blog</a>
+  <a href="../#kontakt">Kontakt</a>
+  <a href="../#kontakt" class="btn btn-primary">Kostenlose Analyse</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     BLOG HERO
+════════════════════════════════════════════ -->
+<section class="blog-hero">
+  <div class="container">
+    <div class="section-label" style="text-align:left;margin-bottom:0.75rem">Blog & Wissen</div>
+    <h1 style="font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text-primary);margin-bottom:0.75rem">
+      Local SEO & Google My Business: <span class="gradient-text">Kostenlose Guides</span>
+    </h1>
+    <p style="font-size:1.05rem;color:var(--text-secondary);max-width:620px;line-height:1.75">
+      Praxiserprobte Strategien, aktuelle Tipps und Schritt-für-Schritt-Anleitungen für lokale Unternehmer – direkt anwendbar, kein Marketing-Blabla.
+    </p>
+
+    <div class="blog-filters" role="group" aria-label="Blog-Kategorien filtern">
+      <button class="blog-filter active" data-filter="all">Alle</button>
+      <button class="blog-filter" data-filter="gmb">Google My Business</button>
+      <button class="blog-filter" data-filter="strategie">Strategie</button>
+      <button class="blog-filter" data-filter="bewertungen">Bewertungen</button>
+      <button class="blog-filter" data-filter="ki">KI & Tools</button>
+      <button class="blog-filter" data-filter="grundlagen">Grundlagen</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FEATURED POST
+════════════════════════════════════════════ -->
+<section class="section-sm" style="background:var(--bg-primary)">
+  <div class="container">
+    <article
+      class="card fade-in"
+      data-cat="gmb"
+      style="display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem;align-items:center;padding:2.5rem"
+    >
+      <div style="height:240px;background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(6,182,212,0.07));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid var(--border)">🗺️</div>
+      <div>
+        <div class="blog-meta" style="margin-bottom:1rem">
+          <span class="badge badge-blue">Google My Business</span>
+          <span class="blog-date" style="margin-left:0.5rem">15. April 2025</span>
+          <span class="badge badge-amber" style="margin-left:auto">Featured</span>
+        </div>
+        <h2 style="font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary);line-height:1.3;margin-bottom:0.875rem">
+          Google My Business 2025: Die ultimative Optimierungs-Anleitung
+        </h2>
+        <p style="font-size:0.9rem;line-height:1.75;color:var(--text-secondary);margin-bottom:1.5rem">
+          Schritt für Schritt: So optimierst du dein Google Business Profil für maximale Sichtbarkeit im Local Pack – mit allen neuen Funktionen und Best Practices für 2025.
+        </p>
+        <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+          <a href="posts/google-my-business-optimierung.html" class="btn btn-primary">Artikel lesen →</a>
+          <span style="font-size:0.8rem;color:var(--text-muted)">⏱ 12 Min. Lesezeit</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BLOG GRID
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-secondary)">
+  <div class="container">
+    <div class="blog-grid" id="blog-grid">
+
+      <article class="blog-card fade-in" data-cat="strategie">
+        <div class="blog-card-thumb" aria-hidden="true">📍</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Strategie</span>
+            <span class="blog-date">8. April 2025</span>
+          </div>
+          <h2 class="blog-title">Local Pack: Wie du in die Top 3 der lokalen Google-Suche kommst</h2>
+          <p class="blog-excerpt">Welche Faktoren entscheiden wirklich, ob du im Local Pack erscheinst? Wir analysieren die drei wichtigsten Ranking-Signale und wie du sie gezielt beeinflussen kannst.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in delay-1" data-cat="bewertungen">
+        <div class="blog-card-thumb" aria-hidden="true">⭐</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Bewertungen</span>
+            <span class="blog-date">1. April 2025</span>
+          </div>
+          <h2 class="blog-title">Mehr 5-Sterne-Bewertungen: So bittest du Kunden richtig um Feedback</h2>
+          <p class="blog-excerpt">Bewertungen sind Gold wert – aber wie fragst du danach, ohne aufdringlich zu wirken? 7 bewährte Strategien, die wirklich funktionieren und rechtlich sauber sind.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in delay-2" data-cat="ki">
+        <div class="blog-card-thumb" aria-hidden="true">🤖</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">KI & Tools</span>
+            <span class="blog-date">24. März 2025</span>
+          </div>
+          <h2 class="blog-title">KI im Local SEO: Tools und Strategien, die 2025 wirklich helfen</h2>
+          <p class="blog-excerpt">Künstliche Intelligenz verändert lokale Suche. Wir zeigen dir, welche KI-Tools sinnvoll sind, welche Hype sind – und wie du sie in deinen Alltag integrierst.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in" data-cat="grundlagen">
+        <div class="blog-card-thumb" aria-hidden="true">📌</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Grundlagen</span>
+            <span class="blog-date">17. März 2025</span>
+          </div>
+          <h2 class="blog-title">NAP-Konsistenz: Warum Name, Adresse und Telefon überall identisch sein müssen</h2>
+          <p class="blog-excerpt">Einer der häufigsten und am meisten unterschätzten Local-SEO-Fehler: inkonsistente Unternehmensdaten im Netz. So findest und behebst du das Problem.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in delay-1" data-cat="gmb">
+        <div class="blog-card-thumb" aria-hidden="true">📣</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Google My Business</span>
+            <span class="blog-date">10. März 2025</span>
+          </div>
+          <h2 class="blog-title">Google Posts: Das unterschätzte GMB-Marketing-Tool endlich richtig nutzen</h2>
+          <p class="blog-excerpt">Regelmäßige Google Posts verbessern dein Ranking und bringen direkte Klicks. Wir zeigen dir den optimalen Post-Rhythmus, die besten Formate und Beispiel-Texte.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in delay-2" data-cat="strategie">
+        <div class="blog-card-thumb" aria-hidden="true">🔗</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Strategie</span>
+            <span class="blog-date">3. März 2025</span>
+          </div>
+          <h2 class="blog-title">Lokale Backlinks aufbauen: 8 Strategien, die für kleine Unternehmen wirklich funktionieren</h2>
+          <p class="blog-excerpt">Lokale Links sind ein starkes Ranking-Signal. Wir zeigen dir praktische Wege, wie auch kleine Unternehmen ohne Budget hochwertige lokale Backlinks aufbauen können.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in" data-cat="grundlagen">
+        <div class="blog-card-thumb" aria-hidden="true">🗂️</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Grundlagen</span>
+            <span class="blog-date">24. Februar 2025</span>
+          </div>
+          <h2 class="blog-title">Google Business Profil verifizieren: Schritt-für-Schritt-Anleitung 2025</h2>
+          <p class="blog-excerpt">Ohne Verifizierung erscheint dein Profil nicht in der Suche. Diese Anleitung führt dich durch alle Verifikationsmethoden – auch wenn die Postkarte nicht ankommt.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in delay-1" data-cat="bewertungen">
+        <div class="blog-card-thumb" aria-hidden="true">💬</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">Bewertungen</span>
+            <span class="blog-date">17. Februar 2025</span>
+          </div>
+          <h2 class="blog-title">Auf negative Bewertungen professionell antworten: 10 Vorlagen und Dos & Don'ts</h2>
+          <p class="blog-excerpt">Jedes Unternehmen bekommt irgendwann eine schlechte Bewertung. Wie du darauf reagierst, entscheidet über deinen Ruf. Hier sind 10 erprobte Antwort-Vorlagen.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card fade-in delay-2" data-cat="ki">
+        <div class="blog-card-thumb" aria-hidden="true">💡</div>
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span class="blog-cat">KI & Tools</span>
+            <span class="blog-date">10. Februar 2025</span>
+          </div>
+          <h2 class="blog-title">ChatGPT für Local SEO: So nutzt du KI für bessere GMB-Beschreibungen und Posts</h2>
+          <p class="blog-excerpt">KI kann dir wertvolle Zeit sparen. Wir zeigen dir konkrete Prompts für Google-Profil-Texte, Review-Antworten und Google Posts – copy-paste-fertig.</p>
+          <a href="#" class="blog-read-more">Artikel lesen →</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Pagination placeholder -->
+    <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:3rem" class="fade-in">
+      <button class="blog-filter active" style="width:40px;height:40px;padding:0;justify-content:center">1</button>
+      <button class="blog-filter" style="width:40px;height:40px;padding:0;justify-content:center">2</button>
+      <button class="blog-filter" style="width:40px;height:40px;padding:0;justify-content:center">3</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     NEWSLETTER / CTA
+════════════════════════════════════════════ -->
+<section class="cta-banner section-sm">
+  <div class="container">
+    <div class="cta-banner-inner fade-in" style="padding:3rem 2rem">
+      <h2>Kein Artikel mehr verpassen</h2>
+      <p style="margin-bottom:1.5rem">Neue Local-SEO-Tipps direkt ins Postfach – 1× pro Woche, kein Spam.</p>
+      <form
+        name="newsletter"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        style="display:flex;gap:0.75rem;max-width:480px;margin:0 auto;flex-wrap:wrap"
+      >
+        <input type="hidden" name="form-name" value="newsletter">
+        <p style="display:none"><input name="bot-field"></p>
+        <input
+          type="email"
+          name="email"
+          placeholder="deine@email.de"
+          required
+          style="flex:1;min-width:200px;background:var(--bg-card);border:1px solid var(--border-accent);border-radius:var(--radius-md);padding:0.75rem 1rem;font-size:0.9rem;color:var(--text-primary);outline:none"
+        >
+        <button type="submit" class="btn btn-primary">Anmelden →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="../" class="nav-logo" style="display:inline-flex">
+          <div class="nav-logo-icon" aria-hidden="true">📍</div>
+          <span class="nav-logo-name">Sichtbar<span>lokal</span></span>
+        </a>
+        <p>KI-gestützte Local SEO und Google My Business Optimierung für lokale Unternehmen.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/sichtbarlokal" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">📸</a>
+          <a href="https://linkedin.com/company/sichtbarlokal" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Kategorien</h4>
+        <div class="footer-links">
+          <a href="#">Google My Business</a>
+          <a href="#">Local SEO Strategie</a>
+          <a href="#">Bewertungsmanagement</a>
+          <a href="#">KI & Tools</a>
+          <a href="#">Grundlagen</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <div class="footer-links">
+          <a href="../tool/">KI-Analyse-Tool</a>
+          <a href="../#produkte">Digitale Produkte</a>
+          <a href="../#leistungen">Agentur-Leistungen</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <div class="footer-links">
+          <a href="../impressum.html">Impressum</a>
+          <a href="../datenschutz.html">Datenschutz</a>
+          <a href="../agb.html">AGB</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Sichtbarlokal. Alle Rechte vorbehalten.</div>
+      <div class="footer-legal">
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

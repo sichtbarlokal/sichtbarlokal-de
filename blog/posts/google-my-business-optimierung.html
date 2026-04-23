@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google My Business 2025: Die ultimative Optimierungs-Anleitung – Sichtbarlokal</title>
+  <meta name="description" content="Schritt-für-Schritt: So optimierst du dein Google Business Profil für maximale Sichtbarkeit im Local Pack – mit Best Practices für 2025.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <style>
+    .post-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3rem;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .prose {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    .prose h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.02em;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2rem 0 0.75rem;
+    }
+    .prose p { margin-bottom: 1.25rem; }
+    .prose ul, .prose ol {
+      margin: 0 0 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .prose ul { list-style: disc; }
+    .prose ol { list-style: decimal; }
+    .prose li { color: var(--text-secondary); }
+    .prose strong { color: var(--text-primary); font-weight: 600; }
+    .prose a { color: var(--accent-light); text-decoration: underline; text-decoration-color: rgba(96,165,250,0.35); }
+    .prose a:hover { text-decoration-color: var(--accent-light); }
+    .prose blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 1.25rem;
+      background: var(--accent-glow);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+    .prose blockquote p { margin: 0; color: var(--text-primary); }
+    .tip-box {
+      background: rgba(6,182,212,0.07);
+      border: 1px solid rgba(6,182,212,0.2);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .tip-box-title { font-weight: 700; color: var(--cyan); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .tip-box p { margin: 0; font-size: 0.9rem; }
+    .post-img-placeholder {
+      height: 280px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(6,182,212,0.06));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      margin: 2rem 0;
+    }
+    .toc {
+      position: sticky;
+      top: calc(var(--nav-height) + 1.5rem);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .toc h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem; }
+    .toc ol { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin: 0; }
+    .toc ol li a {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .toc ol li a:hover { color: var(--accent-light); }
+    .toc ol li a::before { content: counter(toc-counter) '.'; counter-increment: toc-counter; color: var(--text-muted); flex-shrink: 0; font-size: 0.78rem; margin-top: 2px; }
+    .toc ol { counter-reset: toc-counter; }
+    @media (max-width: 900px) {
+      .post-layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav scrolled" role="navigation">
+  <div class="container nav-inner">
+    <a href="../../" class="nav-logo">
+      <div class="nav-logo-icon" aria-hidden="true">📍</div>
+      <span class="nav-logo-name">Sichtbar<span>lokal</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../../#leistungen">Leistungen</a>
+      <a href="../../tool/">KI-Analyse-Tool</a>
+      <a href="../../#produkte">Produkte</a>
+      <a href="../" class="active">Blog</a>
+      <a href="../../#kontakt">Kontakt</a>
+    </div>
+    <div class="nav-cta">
+      <a href="../../#kontakt" class="btn btn-primary btn-sm">Kostenlose Analyse</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="../../#leistungen">Leistungen</a>
+  <a href="../../tool/">KI-Analyse-Tool</a>
+  <a href="../../#produkte">Produkte</a>
+  <a href="../">Blog</a>
+  <a href="../../#kontakt">Kontakt</a>
+  <a href="../../#kontakt" class="btn btn-primary">Kostenlose Analyse</a>
+</div>
+
+<!-- POST HERO -->
+<section style="padding:calc(var(--nav-height) + 3.5rem) 0 3rem;background:var(--bg-secondary);border-bottom:1px solid var(--border)">
+  <div class="container" style="max-width:1100px">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="margin-bottom:1.5rem;font-size:0.82rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem">
+      <a href="../../" style="color:var(--text-muted);transition:color var(--transition)" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">Start</a>
+      <span>›</span>
+      <a href="../" style="color:var(--text-muted);transition:color var(--transition)" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">Blog</a>
+      <span>›</span>
+      <span style="color:var(--text-secondary)">Google My Business Optimierung</span>
+    </nav>
+
+    <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap">
+      <span class="badge badge-blue">Google My Business</span>
+      <span class="badge badge-green">Anleitung</span>
+    </div>
+
+    <h1 style="font-size:clamp(1.75rem,4vw,3rem);font-weight:800;color:var(--text-primary);line-height:1.2;letter-spacing:-0.02em;margin-bottom:1.25rem;max-width:780px">
+      Google My Business 2025: Die ultimative Optimierungs-Anleitung
+    </h1>
+
+    <p style="font-size:1.1rem;color:var(--text-secondary);max-width:680px;line-height:1.75;margin-bottom:2rem">
+      Schritt für Schritt: So optimierst du dein Google Business Profil für maximale Sichtbarkeit im Local Pack – mit allen neuen Funktionen und aktuellen Best Practices.
+    </p>
+
+    <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--gradient-btn);display:flex;align-items:center;justify-content:center;font-weight:700;color:white">S</div>
+        <div>
+          <div style="font-size:0.875rem;font-weight:600;color:var(--text-primary)">Sichtbarlokal Team</div>
+          <div style="font-size:0.78rem;color:var(--text-muted)">Local SEO Experten</div>
+        </div>
+      </div>
+      <div style="font-size:0.82rem;color:var(--text-muted)">📅 15. April 2025</div>
+      <div style="font-size:0.82rem;color:var(--text-muted)">⏱ 12 Min. Lesezeit</div>
+      <div style="font-size:0.82rem;color:var(--text-muted)">🔄 Zuletzt aktualisiert: April 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- POST CONTENT -->
+<section class="section" style="background:var(--bg-primary)">
+  <div class="container" style="max-width:1100px;padding:0 1.5rem">
+    <div class="post-layout">
+      <!-- ARTICLE -->
+      <article class="prose">
+        <div class="post-img-placeholder" aria-hidden="true">🗺️</div>
+
+        <p>
+          Google My Business (heute offiziell: <strong>Google Business Profile</strong>) ist das mächtigste Werkzeug für lokale Unternehmen. Wer es richtig nutzt, erscheint prominent in der Google-Suche, in Google Maps und im begehrten <strong>Local Pack</strong> – genau dann, wenn potenzielle Kunden in der Nähe suchen.
+        </p>
+
+        <p>
+          In diesem Guide erfährst du Schritt für Schritt, wie du dein Profil vollständig optimierst – von der Basis-Einrichtung bis zu fortgeschrittenen Taktiken, die die meisten Mitbewerber ignorieren.
+        </p>
+
+        <div class="tip-box">
+          <div class="tip-box-title">💡 Tipp vorab</div>
+          <p>Nutze unseren <a href="../../tool/">kostenlosen KI-Analyse-Tool</a>, um deinen aktuellen Profil-Score zu ermitteln. Dann weißt du sofort, wo die größten Potenziale liegen.</p>
+        </div>
+
+        <h2 id="warum-gmb">Warum Google My Business so wichtig ist</h2>
+
+        <p>
+          46 % aller Google-Suchen haben lokale Absicht. Wenn jemand „Zahnarzt in der Nähe" oder „beste Pizzeria Hamburg" sucht, erscheinen zuerst das Local Pack (die Map-Box mit drei Einträgen) und dann erst die organischen Suchergebnisse.
+        </p>
+
+        <p>
+          Studien zeigen: <strong>Unternehmen im Local Pack erhalten 44 % aller Klicks</strong> – mehr als die organischen Ergebnisse darunter. Wer nicht im Local Pack erscheint, verliert täglich potenzielle Kunden.
+        </p>
+
+        <blockquote>
+          <p>„Das Google Business Profil ist für lokale Unternehmen wichtiger als die eigene Website. Wer lokal nicht sichtbar ist, existiert für Google nicht."</p>
+        </blockquote>
+
+        <h2 id="basis-einrichtung">Schritt 1: Basis-Einrichtung und Verifizierung</h2>
+
+        <h3>Profil anlegen oder beanspruchen</h3>
+        <p>
+          Gehe zu <strong>business.google.com</strong> und such nach deinem Unternehmen. Falls es bereits existiert (oft automatisch von Google angelegt), kannst du es beanspruchen. Wenn nicht, leg ein neues Profil an.
+        </p>
+
+        <h3>Verifizierung abschließen</h3>
+        <p>Google bietet verschiedene Verifizierungsmethoden an:</p>
+        <ul>
+          <li><strong>Postkarte:</strong> Google schickt dir eine Postkarte mit einem Code (5–14 Tage)</li>
+          <li><strong>Telefon:</strong> Sofortiger Code per SMS oder Anruf (nicht immer verfügbar)</li>
+          <li><strong>E-Mail:</strong> Code an die hinterlegte E-Mail (für manche Branchen)</li>
+          <li><strong>Video-Verifizierung:</strong> Neuere Methode – du filmst dein Unternehmen live</li>
+        </ul>
+
+        <div class="tip-box">
+          <div class="tip-box-title">⚠ Wichtig</div>
+          <p>Ohne Verifizierung erscheint dein Profil nicht in der Suche. Schließe die Verifizierung so schnell wie möglich ab – bei der Postkarten-Methode beginnt die Wartezeit sofort zu laufen.</p>
+        </div>
+
+        <h2 id="vollstaendigkeit">Schritt 2: Vollständigkeit auf 100 % bringen</h2>
+
+        <p>
+          Google belohnt vollständige Profile mit besseren Rankings. Hier ist die komplette Liste aller Felder, die du ausfüllen solltest:
+        </p>
+
+        <h3>Pflichtfelder</h3>
+        <ul>
+          <li>✅ Unternehmensname (exakt wie im Impressum)</li>
+          <li>✅ Primärkategorie (wichtigster Ranking-Faktor!)</li>
+          <li>✅ Adresse (vollständig und korrekt)</li>
+          <li>✅ Telefonnummer (lokale Vorwahl bevorzugt)</li>
+          <li>✅ Website-URL</li>
+          <li>✅ Öffnungszeiten</li>
+        </ul>
+
+        <h3>Optionale, aber wichtige Felder</h3>
+        <ul>
+          <li>📝 Unternehmensbeschreibung (750 Zeichen, keyword-optimiert)</li>
+          <li>🏷️ Sekundärkategorien (bis zu 9 weitere)</li>
+          <li>⚙️ Attribute (Parkplatz, barrierefrei, WLAN etc.)</li>
+          <li>🛍️ Produkte und Dienstleistungen mit Preisen</li>
+          <li>📸 Fotos (Innen, Außen, Team, Produkte)</li>
+          <li>🔗 Social-Media-Links</li>
+        </ul>
+
+        <h2 id="kategorien">Schritt 3: Die richtige Kategorie wählen</h2>
+
+        <p>
+          Die <strong>Primärkategorie</strong> ist der wichtigste einzelne Faktor für dein Local-Pack-Ranking. Sie definiert, für welche Suchanfragen Google dich überhaupt in Betracht zieht.
+        </p>
+
+        <p>
+          Tipps zur Kategorienauswahl:
+        </p>
+        <ol>
+          <li>Wähle die spezifischste zutreffende Kategorie (nicht „Restaurant", sondern „Italienisches Restaurant")</li>
+          <li>Schau dir die Kategorien deiner Top-Wettbewerber an – oft ein gutes Indiz</li>
+          <li>Nutze bis zu 9 Sekundärkategorien für weitere Leistungsbereiche</li>
+          <li>Überprüfe deine Kategorienauswahl regelmäßig – Google fügt neue Kategorien hinzu</li>
+        </ol>
+
+        <h2 id="beschreibung">Schritt 4: Keyword-optimierte Beschreibung schreiben</h2>
+
+        <p>
+          Du hast 750 Zeichen für deine Unternehmensbeschreibung. Nutze sie! Eine gute Beschreibung enthält:
+        </p>
+        <ul>
+          <li>Deinen primären Service-Begriff + Stadtname in den ersten 100 Zeichen</li>
+          <li>Sekundäre Keywords (Leistungen, Zielgruppe)</li>
+          <li>Einzigartigen Nutzen oder USP</li>
+          <li>Keine Übertreibungen oder irreführende Versprechen (Google-Richtlinien!)</li>
+        </ul>
+
+        <div class="tip-box">
+          <div class="tip-box-title">📝 Beispiel-Beschreibung</div>
+          <p><em>„Ihre Zahnarztpraxis in München-Schwabing – seit 15 Jahren für schmerzfreie Behandlungen bekannt. Wir bieten Prophylaxe, Implantologie, Bleaching und Invisalign. Montag bis Freitag geöffnet, Notfalltermine möglich. Kostenlose Erstberatung für Neupatienten."</em></p>
+        </div>
+
+        <h2 id="fotos">Schritt 5: Fotos richtig einsetzen</h2>
+
+        <p>
+          Profile mit Fotos erhalten <strong>42 % mehr Anfragen nach Wegbeschreibungen</strong> und <strong>35 % mehr Klicks zur Website</strong>. Fotos sind kein Nice-to-have, sondern ein harter Ranking-Faktor.
+        </p>
+
+        <p>Empfohlene Fotos:</p>
+        <ul>
+          <li>🏢 Außenansicht (mind. 3, bei verschiedenem Wetter und Tageszeiten)</li>
+          <li>🛋️ Innenaufnahmen (Atmosphäre vermitteln)</li>
+          <li>👨‍💼 Team-Fotos (Vertrauen aufbauen)</li>
+          <li>🛍️ Produkte oder Dienstleistungen in Aktion</li>
+          <li>📱 360°-Fotos (optional, aber wirkungsvoll)</li>
+        </ul>
+
+        <p>Technische Anforderungen: JPG oder PNG, mind. 720×540 Pixel, max. 5 MB.</p>
+
+        <h2 id="google-posts">Schritt 6: Regelmäßig Google Posts erstellen</h2>
+
+        <p>
+          Google Posts sind Mini-Blogeinträge direkt in deinem Profil. Sie werden in der Suche angezeigt und signalisieren Google: <strong>Dieses Unternehmen ist aktiv</strong>. Das verbessert nachweislich das Ranking.
+        </p>
+
+        <p>Empfohlene Post-Strategie:</p>
+        <ul>
+          <li>Mindestens 1 Post pro Woche</li>
+          <li>Aktionspost: Angebote, Sonderaktionen (laufen 7 Tage)</li>
+          <li>Event-Posts: Veranstaltungen ankündigen</li>
+          <li>Update-Posts: Neuigkeiten, neue Produkte</li>
+          <li>Immer mit Foto und Call-to-Action</li>
+        </ul>
+
+        <h2 id="bewertungen">Schritt 7: Bewertungsstrategie aufbauen</h2>
+
+        <p>
+          Bewertungen sind der zweiteinflussstärkste Local-Pack-Ranking-Faktor. Du brauchst sowohl <strong>Quantität</strong> als auch <strong>Qualität</strong> (hohe Sternzahl) und regelmäßige neue Bewertungen.
+        </p>
+
+        <p>So generierst du mehr Bewertungen:</p>
+        <ol>
+          <li>Erstelle einen direkten Bewertungslink (Google gibt dir einen kurzen Link)</li>
+          <li>Bitte jeden zufriedenen Kunden aktiv um eine Bewertung</li>
+          <li>Sende automatisierte Follow-up-E-Mails nach dem Kauf/Termin</li>
+          <li>Zeige QR-Code zur Bewertungsseite an der Kasse oder im Empfangsbereich</li>
+          <li>Antworte auf <strong>jede</strong> Bewertung – das zeigt Google und Kunden, dass du aktiv bist</li>
+        </ol>
+
+        <div class="tip-box">
+          <div class="tip-box-title">⚠ Wichtig zu wissen</div>
+          <p>Kaufe niemals Bewertungen und bitte keine Mitarbeiter um Fake-Reviews. Google erkennt das und kann dein Profil sperren. Außerdem ist es in Deutschland wettbewerbsrechtlich problematisch.</p>
+        </div>
+
+        <h2 id="monitoring">Schritt 8: Monitoring und laufende Optimierung</h2>
+
+        <p>
+          Einmal optimieren reicht nicht. Local SEO ist ein kontinuierlicher Prozess. Überprüfe monatlich:
+        </p>
+        <ul>
+          <li>📊 Google Business Insights (Impressionen, Klicks, Anrufe)</li>
+          <li>🔍 Suchbegriffe, über die Kunden dich finden</li>
+          <li>⭐ Neue Bewertungen und Antwort-Rate</li>
+          <li>📸 Aufrufe deiner Fotos</li>
+          <li>🏆 Ranking-Position für deine Hauptkeywords</li>
+        </ul>
+
+        <h2 id="fazit">Fazit: Dein Aktionsplan</h2>
+
+        <p>
+          Die Optimierung deines Google Business Profils ist kein Hexenwerk – aber es erfordert Konsequenz. Die größten Hebel in Kurzform:
+        </p>
+
+        <ol>
+          <li><strong>Profil 100 % vollständig</strong> ausfüllen (besonders Beschreibung und Attribute)</li>
+          <li><strong>Primärkategorie</strong> sorgfältig wählen</li>
+          <li><strong>Fotos</strong> regelmäßig aktualisieren (mind. 10 aktuelle Fotos)</li>
+          <li><strong>Google Posts</strong> wöchentlich erstellen</li>
+          <li><strong>Bewertungen</strong> aktiv sammeln und auf alle antworten</li>
+          <li><strong>Monatlich auswerten</strong> und anpassen</li>
+        </ol>
+
+        <p>
+          Du möchtest das von Profis umsetzen lassen? <a href="../../#kontakt">Kontaktiere uns für eine kostenlose Erstanalyse</a> – wir prüfen dein Profil und zeigen dir, wo deine größten Potenziale liegen.
+        </p>
+
+        <!-- Author Box -->
+        <div style="margin-top:3rem;padding:1.75rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;align-items:flex-start;gap:1.25rem">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--gradient-btn);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.25rem;color:white;flex-shrink:0">S</div>
+          <div>
+            <div style="font-weight:700;font-size:0.95rem;color:var(--text-primary);margin-bottom:0.25rem">Sichtbarlokal Team</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.625rem">Local SEO & Google My Business Experten · Über 200 Standorte optimiert</div>
+            <p style="font-size:0.875rem;margin:0">Wir helfen lokalen Unternehmen, mehr Kunden durch Google zu gewinnen – mit KI-gestützter Analyse und bewährten Strategien.</p>
+          </div>
+        </div>
+
+        <!-- Related Posts -->
+        <div style="margin-top:3rem">
+          <h3 style="font-size:1.125rem;color:var(--text-primary);margin-bottom:1.25rem">Weitere Artikel</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <a href="../" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;transition:all var(--transition-slow);display:flex;flex-direction:column;gap:0.5rem" onmouseover="this.style.borderColor='var(--border-accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:0.72rem;font-weight:600;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.06em">Bewertungen</span>
+              <span style="font-size:0.9rem;font-weight:600;color:var(--text-primary);line-height:1.4">Mehr 5-Sterne-Bewertungen: So bittest du Kunden richtig</span>
+            </a>
+            <a href="../" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;transition:all var(--transition-slow);display:flex;flex-direction:column;gap:0.5rem" onmouseover="this.style.borderColor='var(--border-accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:0.72rem;font-weight:600;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.06em">Strategie</span>
+              <span style="font-size:0.9rem;font-weight:600;color:var(--text-primary);line-height:1.4">Local Pack: Wie du in die Top 3 der lokalen Google-Suche kommst</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="toc fade-in">
+          <h4>Inhaltsverzeichnis</h4>
+          <ol>
+            <li><a href="#warum-gmb">Warum GMB so wichtig ist</a></li>
+            <li><a href="#basis-einrichtung">Basis-Einrichtung & Verifizierung</a></li>
+            <li><a href="#vollstaendigkeit">Vollständigkeit auf 100 %</a></li>
+            <li><a href="#kategorien">Die richtige Kategorie wählen</a></li>
+            <li><a href="#beschreibung">Keyword-optimierte Beschreibung</a></li>
+            <li><a href="#fotos">Fotos richtig einsetzen</a></li>
+            <li><a href="#google-posts">Google Posts erstellen</a></li>
+            <li><a href="#bewertungen">Bewertungsstrategie aufbauen</a></li>
+            <li><a href="#monitoring">Monitoring & Optimierung</a></li>
+            <li><a href="#fazit">Fazit & Aktionsplan</a></li>
+          </ol>
+        </div>
+
+        <!-- CTA Card -->
+        <div style="margin-top:1.5rem;background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(6,182,212,0.06));border:1px solid rgba(59,130,246,0.2);border-radius:var(--radius-lg);padding:1.75rem;text-align:center" class="fade-in delay-1">
+          <div style="font-size:2rem;margin-bottom:0.875rem" aria-hidden="true">🤖</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--text-primary);margin-bottom:0.625rem">Dein Profil analysieren</div>
+          <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.25rem">Erhalte deinen persönlichen Optimierungs-Score – kostenlos, in 60 Sekunden.</p>
+          <a href="../../tool/" class="btn btn-primary" style="width:100%;justify-content:center">Jetzt analysieren →</a>
+        </div>
+
+        <!-- Product Card -->
+        <div style="margin-top:1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden" class="fade-in delay-2">
+          <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(59,130,246,0.07),transparent)">
+            <div style="font-size:1.75rem;margin-bottom:0.5rem" aria-hidden="true">✅</div>
+            <div style="font-size:0.9rem;font-weight:700;color:var(--text-primary)">GMB Sofort-Audit Checkliste</div>
+          </div>
+          <div style="padding:1.25rem 1.5rem">
+            <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1rem">50+ Checkpunkte, Video-Walkthrough und Optimierungs-Template als sofortiger Download.</p>
+            <a href="https://sichtbarlokal.gumroad.com/l/gmb-audit" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center">Für €27 kaufen →</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner section-sm">
+  <div class="container">
+    <div class="cta-banner-inner fade-in">
+      <h2>Profil-Optimierung lieber <span class="gradient-text">auslagern?</span></h2>
+      <p>Wir übernehmen die komplette GMB-Optimierung – du konzentrierst dich auf dein Kerngeschäft.</p>
+      <div class="btn-row">
+        <a href="../../#kontakt" class="btn btn-primary btn-lg">Kostenlose Analyse anfragen</a>
+        <a href="../" class="btn btn-outline btn-lg">Zurück zum Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="../../" class="nav-logo" style="display:inline-flex">
+          <div class="nav-logo-icon" aria-hidden="true">📍</div>
+          <span class="nav-logo-name">Sichtbar<span>lokal</span></span>
+        </a>
+        <p>KI-gestützte Local SEO und Google My Business Optimierung für lokale Unternehmen.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/sichtbarlokal" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">📸</a>
+          <a href="https://linkedin.com/company/sichtbarlokal" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Blog</h4>
+        <div class="footer-links">
+          <a href="../">Alle Artikel</a>
+          <a href="../">Google My Business</a>
+          <a href="../">Bewertungen</a>
+          <a href="../">KI & Tools</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <div class="footer-links">
+          <a href="../../tool/">KI-Analyse-Tool</a>
+          <a href="../../#produkte">Produkte</a>
+          <a href="../../#leistungen">Leistungen</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <div class="footer-links">
+          <a href="../../impressum.html">Impressum</a>
+          <a href="../../datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Sichtbarlokal. Alle Rechte vorbehalten.</div>
+      <div class="footer-legal">
+        <a href="../../impressum.html">Impressum</a>
+        <a href="../../datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI Analyse-Tool – Sichtbarlokal | Dein Google-Profil sofort analysiert</title>
+  <meta name="description" content="Analysiere dein Google Business Profil kostenlos mit unserem KI-Tool. Profil-Score, Wettbewerber-Vergleich und priorisierter Aktionsplan – in 60 Sekunden.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav class="nav scrolled" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="../" class="nav-logo">
+      <div class="nav-logo-icon" aria-hidden="true">📍</div>
+      <span class="nav-logo-name">Sichtbar<span>lokal</span></span>
+    </a>
+
+    <div class="nav-links">
+      <a href="../#leistungen">Leistungen</a>
+      <a href="./" class="active">KI-Analyse-Tool</a>
+      <a href="../#produkte">Produkte</a>
+      <a href="../blog/">Blog</a>
+      <a href="../#kontakt">Kontakt</a>
+    </div>
+
+    <div class="nav-cta">
+      <a href="../#kontakt" class="btn btn-primary btn-sm">Kostenlose Beratung</a>
+    </div>
+
+    <button class="nav-hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="../#leistungen">Leistungen</a>
+  <a href="./">KI-Analyse-Tool</a>
+  <a href="../#produkte">Produkte</a>
+  <a href="../blog/">Blog</a>
+  <a href="../#kontakt">Kontakt</a>
+  <a href="../#kontakt" class="btn btn-primary">Kostenlose Beratung</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="tool-hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="container" style="position:relative;z-index:2">
+    <div style="max-width:760px;margin:0 auto;text-align:center">
+      <div class="hero-pill" style="justify-content:center">
+        <span class="dot" aria-hidden="true"></span>
+        Kostenlose KI-Analyse · Keine Anmeldung nötig
+      </div>
+
+      <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;color:var(--text-primary);margin-bottom:1.25rem">
+        Dein Google Business Profil<br>
+        <span class="gradient-text">in 60 Sekunden analysiert</span>
+      </h1>
+
+      <p style="font-size:1.1rem;color:var(--text-secondary);line-height:1.75;margin-bottom:2rem;max-width:580px;margin-left:auto;margin-right:auto">
+        Gib den Namen deines Unternehmens ein – unsere KI prüft dein Profil, vergleicht dich mit der Konkurrenz und zeigt dir genau, was du als Nächstes tun solltest.
+      </p>
+
+      <div class="tool-input-wrap" style="position:relative;max-width:680px;margin:0 auto">
+        <form id="tool-demo-form" style="display:flex;flex-direction:column;gap:0.75rem" onsubmit="return false;">
+          <div style="position:relative">
+            <input
+              type="text"
+              name="business"
+              class="tool-input-field"
+              placeholder="z.B. Bäckerei Müller, München …"
+              autocomplete="off"
+              aria-label="Unternehmensname eingeben"
+            >
+            <button type="submit" class="btn btn-primary tool-input-btn">
+              Jetzt analysieren →
+            </button>
+          </div>
+        </form>
+
+        <!-- Demo Result Box -->
+        <div id="tool-result" class="report-preview" style="display:none;margin-top:1.5rem;text-align:left">
+          <!-- Filled by JS -->
+        </div>
+
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.875rem">
+          Kostenlose Demo-Analyse · Für einen vollständigen persönlichen Report →
+          <a href="/#kontakt" style="color:var(--accent-light);font-weight:600">Jetzt anfragen</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHAT THE TOOL CHECKS
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-secondary)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Was analysiert wird</div>
+      <h2>12 Faktoren, die dein<br><span class="gradient-text">lokales Ranking bestimmen</span></h2>
+      <p>Unser KI-System prüft alle relevanten Signale, die Google für das Local Pack berücksichtigt.</p>
+    </div>
+
+    <div class="grid-4">
+      <div class="card fade-in">
+        <div class="card-icon" aria-hidden="true">📝</div>
+        <h3>Profil-Vollständigkeit</h3>
+        <p>Sind alle Felder ausgefüllt? Vollständige Profile ranken bis zu 70 % besser.</p>
+      </div>
+
+      <div class="card fade-in delay-1">
+        <div class="card-icon" aria-hidden="true">🔑</div>
+        <h3>Keyword-Optimierung</h3>
+        <p>Kommen relevante Suchbegriffe in Beschreibung, Produkten und Posts vor?</p>
+      </div>
+
+      <div class="card fade-in delay-2">
+        <div class="card-icon" aria-hidden="true">📸</div>
+        <h3>Foto-Analyse</h3>
+        <p>Anzahl, Qualität und Aktualität der Fotos – ein unterschätzter Ranking-Faktor.</p>
+      </div>
+
+      <div class="card fade-in delay-3">
+        <div class="card-icon" aria-hidden="true">⭐</div>
+        <h3>Bewertungsprofil</h3>
+        <p>Anzahl, Durchschnittswert und Antwortquote deiner Google-Bewertungen.</p>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-icon" aria-hidden="true">📅</div>
+        <h3>Posting-Aktivität</h3>
+        <p>Regelmäßige Google Posts signalisieren Aktivität und verbessern das Ranking.</p>
+      </div>
+
+      <div class="card fade-in delay-1">
+        <div class="card-icon" aria-hidden="true">🏷️</div>
+        <h3>Kategorien & Attribute</h3>
+        <p>Primär- und Sekundärkategorien sowie lokale Attribute korrekt gesetzt?</p>
+      </div>
+
+      <div class="card fade-in delay-2">
+        <div class="card-icon" aria-hidden="true">🔗</div>
+        <h3>NAP-Konsistenz</h3>
+        <p>Name, Adresse und Telefon müssen überall im Netz identisch sein.</p>
+      </div>
+
+      <div class="card fade-in delay-3">
+        <div class="card-icon" aria-hidden="true">⚔️</div>
+        <h3>Wettbewerber-Vergleich</h3>
+        <p>Wie schneidest du gegenüber den Top-3 in deiner Kategorie und Stadt ab?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-primary)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">So funktioniert's</div>
+      <h2>Von der Eingabe zum <span class="gradient-text">Aktionsplan</span></h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step fade-in">
+        <div class="step-num-wrap"><span class="step-num">1</span></div>
+        <h3>Unternehmen eingeben</h3>
+        <p>Gib deinen Unternehmensnamen und Standort ein. Keine Anmeldung, kein Passwort – einfach starten.</p>
+      </div>
+      <div class="process-step fade-in delay-1">
+        <div class="step-num-wrap"><span class="step-num">2</span></div>
+        <h3>KI analysiert dein Profil</h3>
+        <p>Unser System prüft alle 12 Ranking-Faktoren, vergleicht dich mit der Konkurrenz und berechnet deinen Score.</p>
+      </div>
+      <div class="process-step fade-in delay-2">
+        <div class="step-num-wrap"><span class="step-num">3</span></div>
+        <h3>Report & Aktionsplan erhalten</h3>
+        <p>Du bekommst einen priorisierten To-Do-Plan: Was bringt am meisten? Was ist am einfachsten umzusetzen?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     REPORT PREVIEW
+════════════════════════════════════════════ -->
+<section class="section" style="background:var(--bg-secondary)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-label">Beispiel-Report</div>
+      <h2>So sieht dein <span class="gradient-text">vollständiger Report</span> aus</h2>
+      <p>Der vollständige KI-Analyse-Report enthält alle Details, Wettbewerber-Daten und deinen persönlichen 30-Tage-Aktionsplan.</p>
+    </div>
+
+    <div style="max-width:760px;margin:0 auto">
+      <div class="report-preview fade-in">
+        <div class="report-header">
+          <div>
+            <div class="report-title">Local SEO Report – Muster Restaurant GmbH</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem">Erstellt: 22. April 2025 · Gültig für 30 Tage</div>
+          </div>
+          <div class="report-score-circle">
+            <span class="report-score-num">68</span>
+            <span class="report-score-sub">/ 100</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1.5rem">
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.875rem">Profil-Metriken</div>
+          <div class="report-metrics">
+            <div class="report-metric">
+              <div class="report-metric-label">Profil-Vollständigkeit</div>
+              <div class="report-metric-bar"><div class="report-metric-fill" style="width:80%"></div></div>
+              <div class="report-metric-val">80%</div>
+            </div>
+            <div class="report-metric">
+              <div class="report-metric-label">Keyword-Optimierung</div>
+              <div class="report-metric-bar"><div class="report-metric-fill" style="width:45%"></div></div>
+              <div class="report-metric-val">45%</div>
+            </div>
+            <div class="report-metric">
+              <div class="report-metric-label">Bewertungsprofil</div>
+              <div class="report-metric-bar"><div class="report-metric-fill" style="width:72%"></div></div>
+              <div class="report-metric-val">72%</div>
+            </div>
+            <div class="report-metric">
+              <div class="report-metric-label">Foto-Qualität</div>
+              <div class="report-metric-bar"><div class="report-metric-fill" style="width:55%"></div></div>
+              <div class="report-metric-val">55%</div>
+            </div>
+            <div class="report-metric">
+              <div class="report-metric-label">Posting-Aktivität</div>
+              <div class="report-metric-bar"><div class="report-metric-fill" style="width:30%"></div></div>
+              <div class="report-metric-val">30%</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-md);padding:1rem;margin-bottom:1rem">
+          <div style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem">Top 3 Handlungsempfehlungen</div>
+          <div style="display:flex;flex-direction:column;gap:0.625rem">
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.875rem">
+              <span style="color:var(--amber);font-weight:700;flex-shrink:0">1.</span>
+              <span style="color:var(--text-secondary)">Beschreibung mit lokalen Keywords ergänzen (Potenzial: <strong style="color:var(--text-primary)">+18 Punkte</strong>)</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.875rem">
+              <span style="color:var(--amber);font-weight:700;flex-shrink:0">2.</span>
+              <span style="color:var(--text-secondary)">Wöchentliche Google Posts einrichten (Potenzial: <strong style="color:var(--text-primary)">+12 Punkte</strong>)</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.875rem">
+              <span style="color:var(--amber);font-weight:700;flex-shrink:0">3.</span>
+              <span style="color:var(--text-secondary)">10 weitere professionelle Fotos hochladen (Potenzial: <strong style="color:var(--text-primary)">+8 Punkte</strong>)</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+          <span class="badge badge-amber">⚠ 3 kritische Lücken</span>
+          <span class="badge badge-cyan">📈 +38 Punkte Potenzial</span>
+          <span class="badge badge-green">✓ Adresse verifiziert</span>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:2rem" class="fade-in delay-2">
+        <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:1.25rem">
+          Der vollständige Report enthält außerdem: Wettbewerber-Vergleich, NAP-Audit, Bewertungsanalyse und deinen persönlichen 30-Tage-Plan.
+        </p>
+        <a href="/#kontakt" class="btn btn-primary btn-lg">
+          Persönlichen Report anfragen →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA
+════════════════════════════════════════════ -->
+<section class="cta-banner section-sm">
+  <div class="container">
+    <div class="cta-banner-inner fade-in">
+      <h2>Lieber von Profis<br><span class="gradient-text">optimiert lassen?</span></h2>
+      <p>Wir übernehmen die komplette Umsetzung – du konzentrierst dich auf dein Kerngeschäft.</p>
+      <div class="btn-row">
+        <a href="../#kontakt" class="btn btn-primary btn-lg">Kostenlose Beratung anfragen</a>
+        <a href="../#leistungen" class="btn btn-outline btn-lg">Alle Leistungen ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="../" class="nav-logo" style="display:inline-flex">
+          <div class="nav-logo-icon" aria-hidden="true">📍</div>
+          <span class="nav-logo-name">Sichtbar<span>lokal</span></span>
+        </a>
+        <p>KI-gestützte Local SEO und Google My Business Optimierung für lokale Unternehmen in Deutschland.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/sichtbarlokal" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">📸</a>
+          <a href="https://linkedin.com/company/sichtbarlokal" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Tool</h4>
+        <div class="footer-links">
+          <a href="./">Demo ausprobieren</a>
+          <a href="../#produkte">Vollständiger Report</a>
+          <a href="../#kontakt">Persönliche Beratung</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Ressourcen</h4>
+        <div class="footer-links">
+          <a href="../blog/">Blog</a>
+          <a href="../#produkte">Produkte</a>
+          <a href="../#leistungen">Leistungen</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <div class="footer-links">
+          <a href="../impressum.html">Impressum</a>
+          <a href="../datenschutz.html">Datenschutz</a>
+          <a href="../agb.html">AGB</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Sichtbarlokal. Alle Rechte vorbehalten.</div>
+      <div class="footer-legal">
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="Nach oben scrollen">↑</button>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
