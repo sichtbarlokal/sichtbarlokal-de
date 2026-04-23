@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KI Local SEO Analyse | Sichtbar Lokal</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #1D9E75; --green-light: #E1F5EE; --green-dark: #0F6E56;
+    --blue-light: #E6F1FB; --blue-mid: #185FA5;
+    --amber-light: #FAEEDA; --amber-mid: #BA7517;
+    --red-light: #FCEBEB; --red-mid: #A32D2D;
+    --gray-bg: #F8F9FA; --border: rgba(0,0,0,0.1);
+    --text: #1a1a1a; --text-muted: #6b7280;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  body { font-family: 'DM Sans','Helvetica Neue',sans-serif; background: #f4f6f9; color: var(--text); min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; }
+  .container { width: 100%; max-width: 620px; }
+  .header { text-align: center; margin-bottom: 2rem; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green-dark); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 99px; margin-bottom: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .header p { font-size: 15px; color: var(--text-muted); }
+  .progress-bar { display: flex; margin-bottom: 2rem; background: white; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+  .prog-step { flex: 1; padding: 12px 8px; text-align: center; font-size: 12px; font-weight: 500; color: var(--text-muted); border-right: 1px solid var(--border); transition: all 0.3s; }
+  .prog-step:last-child { border-right: none; }
+  .prog-step.active { background: var(--green-light); color: var(--green-dark); font-weight: 600; }
+  .prog-step.done { background: var(--green); color: white; }
+  .card { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 1.75rem; margin-bottom: 16px; }
+  .card-title { font-size: 16px; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .card-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .step { display: none; }
+  .step.active { display: block; }
+  .field { margin-bottom: 1rem; }
+  .field label { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; }
+  .field input, .field select { width: 100%; padding: 11px 14px; font-size: 15px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: white; color: var(--text); outline: none; transition: border-color 0.2s, box-shadow 0.2s; font-family: inherit; }
+  .field input:focus, .field select:focus { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-light); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .btn { width: 100%; padding: 13px; font-size: 15px; font-weight: 600; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; font-family: inherit; margin-top: 8px; }
+  .btn-primary { background: var(--green); color: white; }
+  .btn-primary:hover { background: var(--green-dark); }
+  .err { font-size: 13px; color: var(--red-mid); margin-top: 8px; display: none; background: var(--red-light); padding: 8px 12px; border-radius: var(--radius-sm); }
+  .generating { text-align: center; padding: 3rem 1rem; }
+  .spinner { width: 60px; height: 60px; border: 3px solid var(--green-light); border-top-color: var(--green); border-radius: 50%; animation: spin 0.85s linear infinite; margin: 0 auto 1.5rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .gen-steps { list-style: none; text-align: left; max-width: 280px; margin: 1.5rem auto 0; }
+  .gen-step { font-size: 14px; padding: 5px 0 5px 24px; position: relative; color: var(--text-muted); }
+  .gen-step::before { content: "○"; position: absolute; left: 0; }
+  .gen-step.done::before { content: "✓"; color: var(--green); }
+  .gen-step.active::before { content: "◉"; color: var(--green); }
+  .score-section { display: flex; align-items: center; gap: 1.5rem; }
+  .ring-outer { position: relative; width: 88px; height: 88px; flex-shrink: 0; }
+  .ring-outer svg { width: 88px; height: 88px; transform: rotate(-90deg); }
+  .ring-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; }
+  .score-info { flex: 1; }
+  .score-verdict { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .score-sub { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .issue-list { margin-top: 1rem; list-style: none; }
+  .issue-list li { font-size: 14px; padding: 7px 0 7px 22px; position: relative; border-bottom: 1px solid var(--border); line-height: 1.5; }
+  .issue-list li:last-child { border-bottom: none; }
+  .issue-list li::before { content: "→"; position: absolute; left: 0; color: var(--green); font-size: 13px; top: 8px; }
+  .locked-card { position: relative; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 16px; }
+  .locked-blur { filter: blur(4px); pointer-events: none; user-select: none; background: white; padding: 1.75rem; }
+  .locked-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.85); backdrop-filter: blur(2px); padding: 1.5rem; text-align: center; }
+  .lock-icon { font-size: 28px; margin-bottom: 10px; }
+  .lock-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .lock-sub { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .payment-card { background: linear-gradient(135deg, #f0fdf9 0%, #e0f2fe 100%); border: 2px solid var(--green); border-radius: var(--radius); padding: 1.75rem; margin-bottom: 16px; }
+  .payment-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .price { font-size: 36px; font-weight: 700; color: var(--green); margin: 12px 0; }
+  .price span { font-size: 16px; font-weight: 400; color: var(--text-muted); }
+  .included { list-style: none; margin: 16px 0; }
+  .included li { font-size: 14px; padding: 5px 0 5px 22px; position: relative; }
+  .included li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .email-field { margin-bottom: 12px; }
+  .email-field input { width: 100%; padding: 11px 14px; font-size: 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: white; color: var(--text); outline: none; font-family: inherit; }
+  .email-field input:focus { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-light); }
+  .btn-pay { width: 100%; padding: 15px; font-size: 16px; font-weight: 700; background: var(--green); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .btn-pay:hover { background: var(--green-dark); }
+  .btn-pay:disabled { background: #d1d5db; cursor: not-allowed; }
+  .secure-note { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 10px; }
+  .blur-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .blur-name { font-size: 14px; font-weight: 600; }
+  .blur-badge { font-size: 11px; padding: 3px 8px; border-radius: 99px; background: var(--red-light); color: var(--red-mid); }
+  .blur-week { margin-bottom: 10px; }
+  .blur-label { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; }
+  .blur-task { font-size: 13px; background: var(--gray-bg); border-radius: 6px; padding: 7px 10px; margin-bottom: 4px; }
+  .kw { font-size: 13px; padding: 5px 14px; background: var(--blue-light); color: var(--blue-mid); border-radius: 99px; font-weight: 500; display: inline-block; margin: 3px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 1rem; line-height: 1.6; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="badge">⚡ KI-gestützt</div>
+    <h1>Local SEO Analyse</h1>
+    <p>Kostenloser Score-Check – vollständiger Report für €47</p>
+  </div>
+  <div class="progress-bar">
+    <div class="prog-step active" id="ps1">① Eingabe</div>
+    <div class="prog-step" id="ps2">② Analyse</div>
+    <div class="prog-step" id="ps3">③ Report</div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step active" id="step1">
+    <div class="card">
+      <div class="card-title"><div class="card-icon">🏢</div> Dein Unternehmen</div>
+      <div class="field"><label>Unternehmensname *</label><input id="biz-name" placeholder="z. B. Zahnarzt Dr. Müller" /></div>
+      <div class="row">
+        <div class="field"><label>Ort *</label><input id="biz-city" placeholder="z. B. München" /></div>
+        <div class="field"><label>PLZ</label><input id="biz-plz" placeholder="z. B. 80331" /></div>
+      </div>
+      <div class="field">
+        <label>Branche *</label>
+        <select id="biz-industry">
+          <option value="">Bitte wählen...</option>
+          <option>Zahnarzt / Arztpraxis</option>
+          <option>Rechtsanwalt / Kanzlei</option>
+          <option>Gastronomie / Restaurant</option>
+          <option>Handwerk / Baugewerbe</option>
+          <option>Friseur / Beauty</option>
+          <option>Einzelhandel / Shop</option>
+          <option>Immobilien / Makler</option>
+          <option>Fitness / Sport</option>
+          <option>Andere</option>
+        </select>
+      </div>
+      <div class="field"><label>Website (optional)</label><input id="biz-url" placeholder="www.example.de" /></div>
+      <div class="err" id="err1">Bitte alle Pflichtfelder ausfüllen.</div>
+      <button class="btn btn-primary" onclick="startAnalysis()">Kostenlosen Score berechnen →</button>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step" id="step2">
+    <div class="card">
+      <div class="generating">
+        <div class="spinner"></div>
+        <p style="font-size:17px;font-weight:600;margin-bottom:4px;">Analyse läuft...</p>
+        <p style="font-size:14px;color:var(--text-muted);">Ca. 30–60 Sekunden</p>
+        <ul class="gen-steps">
+          <li class="gen-step" id="gs1">Standort wird geortet</li>
+          <li class="gen-step" id="gs2">Wettbewerber werden gesucht</li>
+          <li class="gen-step" id="gs3">KI analysiert Daten</li>
+          <li class="gen-step" id="gs4">Report wird finalisiert</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step" id="step3">
+    <!-- FREE: Score -->
+    <div class="card">
+      <div class="card-title"><div class="card-icon">📊</div> Dein Profil-Score (kostenlos)</div>
+      <div class="score-section">
+        <div class="ring-outer">
+          <svg viewBox="0 0 88 88"><circle cx="44" cy="44" r="34" fill="none" stroke="#e5e7eb" stroke-width="7"/><circle id="score-arc" cx="44" cy="44" r="34" fill="none" stroke="#1D9E75" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 213.63" style="transition:stroke-dasharray 1s ease"/></svg>
+          <div class="ring-num" id="score-num">--</div>
+        </div>
+        <div class="score-info">
+          <div class="score-verdict" id="score-verdict">--</div>
+          <div class="score-sub" id="score-detail"></div>
+        </div>
+      </div>
+      <ul class="issue-list" id="score-issues"></ul>
+    </div>
+
+    <!-- LOCKED: Competitors -->
+    <div class="locked-card">
+      <div class="locked-blur">
+        <div style="font-size:16px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;"><span style="width:28px;height:28px;border-radius:6px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:14px;">🔍</span> Top-3-Wettbewerber</div>
+        <div class="blur-row"><div class="blur-name">Wettbewerber 1 – München</div><div class="blur-badge">Stark</div></div>
+        <div class="blur-row"><div class="blur-name">Wettbewerber 2 – München</div><div class="blur-badge">Mittel</div></div>
+        <div class="blur-row"><div class="blur-name">Wettbewerber 3 – München</div><div class="blur-badge">Schwach</div></div>
+      </div>
+      <div class="locked-overlay">
+        <div class="lock-icon">🔒</div>
+        <div class="lock-title">Im vollständigen Report enthalten</div>
+        <div class="lock-sub">Echte Google-Wettbewerber mit Bewertungen, Review-Anzahl und Stärke-Einschätzung</div>
+      </div>
+    </div>
+
+    <!-- LOCKED: 30-Tage-Plan -->
+    <div class="locked-card">
+      <div class="locked-blur">
+        <div style="font-size:16px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;"><span style="width:28px;height:28px;border-radius:6px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:14px;">📅</span> 30-Tage-Aktionsplan</div>
+        <div class="blur-week"><div class="blur-label">Woche 1</div><div class="blur-task">Google Business Profil vollständig ausfüllen</div><div class="blur-task">Kategorien optimieren</div></div>
+        <div class="blur-week"><div class="blur-label">Woche 2</div><div class="blur-task">Bewertungsstrategie umsetzen</div></div>
+      </div>
+      <div class="locked-overlay">
+        <div class="lock-icon">🔒</div>
+        <div class="lock-title">Im vollständigen Report enthalten</div>
+        <div class="lock-sub">Konkrete Woche-für-Woche Aufgaben für deine Branche und deinen Standort</div>
+      </div>
+    </div>
+
+    <!-- LOCKED: Keywords -->
+    <div class="locked-card">
+      <div class="locked-blur">
+        <div style="font-size:16px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;"><span style="width:28px;height:28px;border-radius:6px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:14px;">🔑</span> Keyword-Empfehlungen</div>
+        <span class="kw">Keyword 1</span><span class="kw">Keyword 2</span><span class="kw">Keyword 3</span><span class="kw">Keyword 4</span><span class="kw">Keyword 5</span>
+      </div>
+      <div class="locked-overlay">
+        <div class="lock-icon">🔒</div>
+        <div class="lock-title">Im vollständigen Report enthalten</div>
+        <div class="lock-sub">8 lokale Keywords mit Suchvolumen-Potenzial für deine Branche</div>
+      </div>
+    </div>
+
+    <!-- Payment -->
+    <div class="payment-card">
+      <h3>📄 Vollständigen Report freischalten</h3>
+      <p style="font-size:14px;color:var(--text-muted);margin-top:4px;">Einmalige Zahlung – Report als PDF per E-Mail</p>
+      <div class="price">€47 <span>einmalig</span></div>
+      <ul class="included">
+        <li>Top-3-Wettbewerber mit echten Google-Daten</li>
+        <li>Vollständiger 30-Tage-Aktionsplan</li>
+        <li>8 Keyword-Empfehlungen für deinen Markt</li>
+        <li>Professionell formatiertes PDF</li>
+        <li>Schritt-für-Schritt-Anleitungen</li>
+      </ul>
+      <div class="email-field">
+        <input type="email" id="pay-email" placeholder="Deine E-Mail für den Report *" />
+      </div>
+      <div class="err" id="err-pay">Bitte eine gültige E-Mail eingeben.</div>
+      <button class="btn-pay" id="pay-btn" onclick="startPayment()">Jetzt für €47 freischalten →</button>
+      <p class="secure-note">🔒 Sichere Zahlung via Stripe · Kreditkarte, SEPA, PayPal</p>
+    </div>
+    <p class="disclaimer">Score-Analyse kostenlos. Vollständiger PDF-Report kostenpflichtig. Wettbewerber-Daten via Google Places API.</p>
+  </div>
+</div>
+
+<!-- Hidden Netlify form -->
+<form name="report-delivery" netlify netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="report-delivery" />
+  <input name="bot-field" /><input name="email" /><input name="bizName" /><input name="bizCity" /><input name="sessionId" /><input name="score" /><input name="scoreVerdict" />
+</form>
+
+<script>
+const PLACES_FN = "/.netlify/functions/places";
+const CHECKOUT_FN = "/.netlify/functions/stripe-checkout";
+let reportData = {}, bizInfo = {};
+
+function setStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  ['ps1','ps2','ps3'].forEach((id,i) => {
+    document.getElementById(id).className = 'prog-step'+(i<n-1?' done':i===n-1?' active':'');
+  });
+}
+function setGenStep(n) {
+  for(let i=1;i<=4;i++) document.getElementById('gs'+i).className='gen-step'+(i<n?' done':i===n?' active':'');
+}
+function startAnalysis() {
+  const name=document.getElementById('biz-name').value.trim();
+  const city=document.getElementById('biz-city').value.trim();
+  const industry=document.getElementById('biz-industry').value;
+  if(!name||!city||!industry){document.getElementById('err1').style.display='block';return;}
+  document.getElementById('err1').style.display='none';
+  bizInfo={name,city,industry,plz:document.getElementById('biz-plz').value.trim(),url:document.getElementById('biz-url').value.trim()};
+  setStep(2); runAnalysis();
+}
+async function callPlaces(body) {
+  const res=await fetch(PLACES_FN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!res.ok) throw new Error('Places error '+res.status);
+  return res.json();
+}
+async function runAnalysis() {
+  const {name,city,industry,plz}=bizInfo;
+  let liveCompetitors=null, geocode=null;
+  setGenStep(1);
+  try { geocode=await callPlaces({action:'geocode',query:plz?`${plz} ${city}, Deutschland`:`${city}, Deutschland`}); } catch(e){}
+  setGenStep(2);
+  try {
+    const sb={action:'search',query:`${industry} ${city}`};
+    if(geocode) sb.location=`${geocode.lat},${geocode.lng}`;
+    const r=await callPlaces(sb);
+    if(r.results?.length) liveCompetitors=r.results;
+  } catch(e){}
+  setGenStep(3);
+  const ctx=liveCompetitors?`Echte Wettbewerber:\n${liveCompetitors.map(c=>`- ${c.name}: ${c.rating||'k.A.'} Sterne, ${c.reviewCount} Bewertungen`).join('\n')}`:'Simuliere realistische Wettbewerber.';
+  const prompt=`Local SEO Analyse: ${name}, ${city}, Branche: ${industry}.\n${ctx}\nAntworte NUR mit JSON:\n{"score":<0-100>,"scoreVerdict":"<Ausbaufähig/Solide Basis/Gut aufgestellt>","scoreDetail":"<Ein Satz>","issues":["<1>","<2>","<3>"],"competitors":[${liveCompetitors?liveCompetitors.map(c=>`{"name":"${c.name}","rating":${c.rating||0},"reviews":${c.reviewCount},"strength":"Stark"}`).join(','):'{"name":"Beispiel","rating":4.2,"reviews":87,"strength":"Stark"}'}],"plan":{"week1":["<Aufgabe>","<Aufgabe>"],"week2":["<Aufgabe>","<Aufgabe>"],"week3":["<Aufgabe>","<Aufgabe>"],"week4":["<Aufgabe>","<Aufgabe>"]},"keywords":["<kw1>","<kw2>","<kw3>","<kw4>","<kw5>","<kw6>","<kw7>","<kw8>"]}`;
+  try {
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();
+    reportData=JSON.parse(data.content.map(b=>b.text||'').join('').replace(/```json|```/g,'').trim());
+    if(liveCompetitors) reportData.competitors=reportData.competitors.map((c,i)=>({...c,...(liveCompetitors[i]||{})}));
+  } catch(e) {
+    reportData={score:52,scoreVerdict:'Verbesserungspotenzial',scoreDetail:`Grundlegende Präsenz für ${industry} in ${city} vorhanden, aber wichtige Optimierungen fehlen.`,issues:['Unvollständiges Google Business Profil','Zu wenige Kundenbewertungen','Fehlende lokale Keywords']};
+  }
+  setGenStep(4);
+  await new Promise(r=>setTimeout(r,500));
+  document.getElementById('score-num').textContent=reportData.score||'--';
+  document.getElementById('score-verdict').textContent=reportData.scoreVerdict||'';
+  document.getElementById('score-detail').textContent=reportData.scoreDetail||'';
+  document.getElementById('score-issues').innerHTML=(reportData.issues||[]).map(i=>`<li>${i}</li>`).join('');
+  setStep(3);
+  setTimeout(()=>{
+    const score=Math.min(100,Math.max(0,reportData.score||0));
+    const circ=2*Math.PI*34, arc=(score/100)*circ;
+    document.getElementById('score-arc').setAttribute('stroke-dasharray',`${arc.toFixed(2)} ${(circ-arc).toFixed(2)}`);
+    const color=score>=70?'#1D9E75':score>=45?'#BA7517':'#A32D2D';
+    document.getElementById('score-arc').setAttribute('stroke',color);
+    document.getElementById('score-num').style.color=color;
+  },300);
+}
+async function startPayment() {
+  const email=document.getElementById('pay-email').value.trim();
+  if(!email||!email.includes('@')||!email.includes('.')){document.getElementById('err-pay').style.display='block';return;}
+  document.getElementById('err-pay').style.display='none';
+  const btn=document.getElementById('pay-btn');
+  btn.disabled=true; btn.textContent='Weiterleitung zu Stripe...';
+  try {
+    const res=await fetch(CHECKOUT_FN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({reportData,bizName:bizInfo.name,bizCity:bizInfo.city,email})});
+    const data=await res.json();
+    if(data.url) window.location.href=data.url;
+    else throw new Error(data.error||'Checkout failed');
+  } catch(e) {
+    btn.disabled=false; btn.textContent='Jetzt für €47 freischalten →';
+    alert('Fehler beim Checkout. Bitte versuche es erneut.');
+  }
+}
+</script>
+</body>
+</html>
