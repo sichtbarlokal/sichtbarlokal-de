@@ -31,4 +31,8 @@
 [[headers]]
   for = "/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    # Kein "immutable" - sonst stecken JS-Updates jahrelang im Cache fest.
+    # max-age=0 + must-revalidate: Browser cached, fragt aber bei jedem Request
+    # via ETag/If-None-Match nach -> 304 wenn unveraendert (kein Traffic),
+    # 200 mit neuem File wenn geaendert. Cache-Bust per ?v=... in HTML.
+    Cache-Control = "public, max-age=0, must-revalidate"
