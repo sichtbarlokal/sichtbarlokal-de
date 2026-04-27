@@ -7,11 +7,13 @@
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
 
+# /api/* wird durch die Function selbst ueber die in-code config (path: "/api/analyze") bedient.
+# Static files und Functions werden von Netlify VOR diesem Redirect aufgeloest -
+# der Catch-all greift also nur fuer wirklich unbekannte Pfade.
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
 
 [[headers]]
   for = "/*"

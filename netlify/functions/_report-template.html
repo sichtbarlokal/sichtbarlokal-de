@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Local SEO Report – {{businessName}}</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 22mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    color: #0d1426;
+    margin: 0;
+    line-height: 1.55;
+    font-size: 10.5pt;
+  }
+  h1 { font-size: 22pt; margin: 0 0 6pt; color: #0d1426; }
+  h2 { font-size: 14pt; margin: 18pt 0 6pt; color: #0d1426; border-bottom: 1pt solid #e2e8f0; padding-bottom: 3pt; }
+  h3 { font-size: 11.5pt; margin: 10pt 0 4pt; color: #1e3a8a; }
+  p  { margin: 0 0 6pt; }
+  small, .meta { font-size: 8.5pt; color: #64748b; }
+
+  .cover {
+    background: linear-gradient(135deg, #0d1426 0%, #1e3a8a 100%);
+    color: #fff;
+    padding: 28pt 24pt;
+    border-radius: 10pt;
+    margin-bottom: 16pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cover h1 { color: #fff; }
+  .cover .sub { color: #93c5fd; font-size: 10pt; margin-top: 4pt; }
+  .score-circle {
+    width: 84pt; height: 84pt; border-radius: 50%;
+    background: #fff; color: #0d1426;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 0 4pt rgba(255,255,255,0.18);
+  }
+  .score-circle .num { font-size: 26pt; font-weight: 800; line-height: 1; }
+  .score-circle .lbl { font-size: 8pt; color: #64748b; margin-top: 2pt; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
+  .panel {
+    border: 0.6pt solid #e2e8f0;
+    border-radius: 6pt;
+    padding: 10pt 12pt;
+    background: #f8fafc;
+  }
+  .panel.warn  { background: #fffbeb; border-color: #fde68a; }
+  .panel.ok    { background: #f0fdf4; border-color: #bbf7d0; }
+  .panel.affil {
+    background: #eff6ff; border-color: #bfdbfe;
+    margin-top: 14pt;
+  }
+  .label { font-size: 7.8pt; text-transform: uppercase; letter-spacing: 0.06em; color: #64748b; font-weight: 600; margin-bottom: 4pt; }
+
+  .metric { display: grid; grid-template-columns: 110pt 1fr 32pt; gap: 8pt; align-items: center; margin-bottom: 5pt; font-size: 9.5pt; }
+  .metric .name { color: #334155; }
+  .metric .bar { height: 7pt; background: #e2e8f0; border-radius: 99pt; overflow: hidden; }
+  .metric .fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+  .metric .val { text-align: right; font-weight: 700; color: #0d1426; }
+
+  ol.recs { padding-left: 16pt; }
+  ol.recs li { margin-bottom: 8pt; }
+  ol.recs strong { color: #0d1426; }
+
+  table.comp { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  table.comp th, table.comp td { padding: 5pt 6pt; border-bottom: 0.5pt solid #e2e8f0; text-align: left; }
+  table.comp th { background: #f1f5f9; font-weight: 600; color: #334155; }
+
+  .plan-week {
+    border-left: 3pt solid #3b82f6;
+    padding: 4pt 10pt 6pt;
+    margin-bottom: 8pt;
+    background: #f8fafc;
+  }
+  .plan-week h4 { margin: 0 0 3pt; font-size: 10pt; color: #1e3a8a; }
+  .plan-week ul { margin: 2pt 0 0 14pt; padding: 0; }
+  .plan-week li { margin-bottom: 2pt; font-size: 9pt; color: #334155; }
+
+  .footer-note {
+    margin-top: 18pt; padding-top: 8pt;
+    border-top: 0.5pt solid #e2e8f0;
+    font-size: 7.5pt; color: #94a3b8; text-align: center;
+  }
+
+  a { color: #2563eb; text-decoration: none; }
+
+  .pagebreak { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER
+============================================================ -->
+<div class="cover">
+  <div>
+    <div style="font-size:9.5pt;color:#93c5fd;margin-bottom:4pt;">Local SEO Report · Sichtbarlokal</div>
+    <h1>{{businessName}}</h1>
+    <div class="sub">{{businessAddress}}</div>
+    <div class="sub" style="margin-top:8pt;">Erstellt: {{generatedDate}} · Gültig 30 Tage</div>
+  </div>
+  <div class="score-circle">
+    <div class="num">{{score}}</div>
+    <div class="lbl">/ 100</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PROFIL-SNAPSHOT
+============================================================ -->
+<h2>1. Profil-Snapshot</h2>
+<div class="grid-2">
+  <div class="panel">
+    <div class="label">Bewertungen</div>
+    <div style="font-size:14pt;font-weight:700;">★ {{rating}} <span style="font-size:9.5pt;color:#64748b;font-weight:400;">({{reviewCount}})</span></div>
+  </div>
+  <div class="panel">
+    <div class="label">Fotos im Profil</div>
+    <div style="font-size:14pt;font-weight:700;">{{photoCount}}</div>
+  </div>
+  <div class="panel">
+    <div class="label">Kategorie</div>
+    <div>{{category}}</div>
+  </div>
+  <div class="panel">
+    <div class="label">Website</div>
+    <div>{{websiteOrDash}}</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     METRIKEN
+============================================================ -->
+<h2>2. Profil-Metriken</h2>
+{{metricsRows}}
+
+<!-- ============================================================
+     KRITISCHE LUECKEN / TOP-3
+============================================================ -->
+<h2>3. Top-Handlungsempfehlungen (priorisiert nach Impact)</h2>
+<ol class="recs">
+  {{recommendationItems}}
+</ol>
+
+<!-- ============================================================
+     WETTBEWERBER
+============================================================ -->
+<h2>4. Wettbewerber-Vergleich (3,5 km Umkreis)</h2>
+<table class="comp">
+  <thead><tr><th>Mitbewerber</th><th>Bewertung</th><th>Anzahl Reviews</th><th>Adresse</th></tr></thead>
+  <tbody>
+    {{competitorRows}}
+  </tbody>
+</table>
+
+<!-- ============================================================
+     NAP-AUDIT
+============================================================ -->
+<h2>5. NAP-Konsistenz (Name · Adresse · Telefon)</h2>
+<div class="panel">
+  <div><strong>Name:</strong> {{businessName}}</div>
+  <div><strong>Adresse:</strong> {{businessAddress}}</div>
+  <div><strong>Telefon:</strong> {{phoneOrDash}}</div>
+  <div><strong>Website:</strong> {{websiteOrDash}}</div>
+  <p style="margin-top:6pt;font-size:9pt;color:#475569;">
+    Wir empfehlen einen Citation-Audit auf Yelp, Gelbe Seiten, 11880, Bing Places, Apple Maps und
+    branchenspezifischen Verzeichnissen. Identische Daten überall sind ein direkter Ranking-Hebel.
+  </p>
+</div>
+
+<!-- ============================================================
+     30-TAGE-PLAN
+============================================================ -->
+<div class="pagebreak"></div>
+<h2>6. Dein 30-Tage-Plan</h2>
+{{thirtyDayPlan}}
+
+<!-- ============================================================
+     AFFILIATE / TOOL-EMPFEHLUNG
+============================================================ -->
+<h2>7. Empfohlenes DIY-Monitoring-Tool</h2>
+<div class="panel affil">
+  <div class="label" style="color:#2563eb;">Tool-Empfehlung · Localo</div>
+  <h3 style="color:#1e3a8a;margin-top:2pt;">Tägliches Local-SEO-Monitoring auf Knopfdruck</h3>
+  <p>
+    Die hier gezeigten Hebel willst du laufend tracken: Ranking für deine Top-Keywords,
+    Wettbewerbsbewegungen, Citations-Status. Wir nutzen <strong>Localo</strong> dafür selbst –
+    es ersetzt drei Einzeltools (Rank-Tracker, Citation-Checker, Aufgaben-Manager) und
+    automatisiert deinen Local-SEO-Workflow.
+  </p>
+  <p style="margin-top:6pt;">
+    <strong>Was du damit konkret abdeckst:</strong>
+  </p>
+  <ul style="margin:2pt 0 8pt 16pt;">
+    <li>Tägliche Ranking-Checks auf Map- und Suche-Position</li>
+    <li>Automatische Aufgabenliste basierend auf Profil-Lücken</li>
+    <li>Wettbewerber-Tracking inkl. Bewertungs-Wachstum</li>
+    <li>Citations-Audit auf 50+ deutschen Verzeichnissen</li>
+  </ul>
+  <p>
+    <strong>→ <a href="{{affiliateUrl}}">Localo jetzt 14 Tage kostenlos testen</a></strong>
+  </p>
+  <p style="font-size:7.5pt;color:#64748b;margin-top:8pt;">
+    Werbe-Hinweis: Affiliate-Link – Sichtbarlokal erhält bei Abschluss eine Provision.
+    Für dich entstehen keine Mehrkosten. Wir empfehlen Localo, weil wir es selbst einsetzen.
+  </p>
+</div>
+
+<div class="footer-note">
+  Sichtbarlokal · Local SEO &amp; Google Business Profile Optimierung · sichtbarlokal.de · kontakt@sichtbarlokal.de<br>
+  Dieser Report wurde automatisch erstellt auf Basis öffentlicher Google-Daten und enthält individuelle Empfehlungen.
+</div>
+
+</body>
+</html>
