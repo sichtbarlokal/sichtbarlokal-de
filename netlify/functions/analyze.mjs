@@ -126,13 +126,15 @@ async function pageSpeedScore(websiteUri, apiKey) {
 // Score & Recommendations
 // ----------------------------------------------------------------
 function scoreProfile(place, psi) {
-  // Profil-Vollstaendigkeit – binaere Signale
+  // Profil-Vollstaendigkeit - binaere Signale.
+  // editorialSummary bewusst NICHT geprueft: das ist Googles eigene Editorial-
+  // Beschreibung und nicht die Inhaber-Beschreibung. Letztere kann ueber die
+  // public Places API nicht ausgelesen werden (nur ueber GBP-API mit OAuth).
   const completenessChecks = [
     !!place.formattedAddress,
     !!place.nationalPhoneNumber || !!place.internationalPhoneNumber,
     !!place.websiteUri,
     !!place.regularOpeningHours,
-    !!place.editorialSummary,
     !!place.primaryType,
     Array.isArray(place.types) && place.types.length >= 2,
     Array.isArray(place.photos) && place.photos.length >= 5,
@@ -152,14 +154,15 @@ function scoreProfile(place, psi) {
   // Fotos
   const photos = score0to100((place.photos || []).length, 25);
 
-  // Beschreibung / Keywords (heuristisch ueber editorialSummary-Laenge)
-  const summary =
-    place.editorialSummary?.text || place.editorialSummary?.languageCode
-      ? place.editorialSummary?.text || ""
-      : "";
-  const keyword = summary
-    ? clamp(Math.round((summary.length / 250) * 100), 0, 100)
-    : 0;
+  // Kategorisierung: Anzahl Primaer- + Sekundaer-Kategorien.
+  // Mehr Kategorien = bessere Sichtbarkeit fuer mehr Long-Tail-Keywords.
+  // Google erlaubt 1 Primaer + bis zu 9 Sekundaer-Kategorien.
+  const typesCount = (place.types || []).length;
+  const categoryDepth =
+    typesCount >= 5 ? 100 :
+    typesCount >= 3 ? 75 :
+    typesCount >= 2 ? 50 :
+    typesCount >= 1 ? 25 : 0;
 
   // Website / PageSpeed
   const websiteScore = !place.websiteUri
@@ -170,17 +173,17 @@ function scoreProfile(place, psi) {
 
   // Gewichtung -> Gesamt-Score
   const weights = {
-    completeness: 0.25,
-    reviews: 0.25,
+    completeness: 0.30,
+    reviews: 0.30,
     photos: 0.15,
-    keyword: 0.15,
-    website: 0.2,
+    categoryDepth: 0.10,
+    website: 0.15,
   };
   const total = Math.round(
     completeness * weights.completeness +
       reviews * weights.reviews +
       photos * weights.photos +
-      keyword * weights.keyword +
+      categoryDepth * weights.categoryDepth +
       websiteScore * weights.website
   );
 
@@ -190,7 +193,7 @@ function scoreProfile(place, psi) {
       "Profil-Vollstaendigkeit": completeness,
       "Bewertungsprofil": reviews,
       "Foto-Qualitaet & Anzahl": photos,
-      "Beschreibung & Keywords": keyword,
+      "Kategorisierung": categoryDepth,
       "Website-Performance": websiteScore,
     },
   };
@@ -202,10 +205,14 @@ function recommendations(place, scored, psi, competitors) {
 
   if (m["Profil-Vollstaendigkeit"] < 80) {
     const missing = [];
-    if (!place.editorialSummary) missing.push("Unternehmensbeschreibung");
     if (!place.regularOpeningHours) missing.push("Oeffnungszeiten");
     if (!place.websiteUri) missing.push("Website-URL");
-    if (!(place.photos && place.photos.length >= 5)) missing.push("min. 5 Fotos");
+    if (!(place.nationalPhoneNumber || place.internationalPhoneNumber))
+      missing.push("Telefonnummer");
+    if (!(place.photos && place.photos.length >= 5))
+      missing.push("min. 5 Fotos");
+    if (!(Array.isArray(place.types) && place.types.length >= 2))
+      missing.push("Sekundaer-Kategorien");
     recs.push({
       title: missing.length
         ? `Profil vervollstaendigen: ${missing.join(", ")}`
@@ -220,7 +227,7 @@ function recommendations(place, scored, psi, competitors) {
     const cnt = place.userRatingCount || 0;
     const target = Math.max(50, cnt + 25);
     recs.push({
-      title: `Bewertungen ausbauen: aktuell ${cnt} – Ziel ${target}+`,
+      title: `Bewertungen ausbauen: aktuell ${cnt} - Ziel ${target}+`,
       impact: 100 - m["Bewertungsprofil"],
       detail:
         "Bewertungen sind nach Profil-Vollstaendigkeit der staerkste Local-Pack-Faktor. Etabliere einen automatisierten Review-Request-Prozess.",
@@ -230,19 +237,20 @@ function recommendations(place, scored, psi, competitors) {
   if (m["Foto-Qualitaet & Anzahl"] < 60) {
     const cnt = (place.photos || []).length;
     recs.push({
-      title: `Fotos hochladen: aktuell ${cnt} – Ziel 25+`,
+      title: `Fotos hochladen: aktuell ${cnt} - Ziel 25+`,
       impact: 100 - m["Foto-Qualitaet & Anzahl"],
       detail:
         "Profile mit 25+ Fotos erhalten laut Google bis zu 42 % mehr Routenanfragen und 35 % mehr Klicks zur Website.",
     });
   }
 
-  if (m["Beschreibung & Keywords"] < 60) {
+  if (m["Kategorisierung"] < 75) {
+    const cnt = (place.types || []).length;
     recs.push({
-      title: "Beschreibung mit lokalen Keywords ausbauen (750 Zeichen Limit)",
-      impact: 100 - m["Beschreibung & Keywords"],
+      title: `Kategorien ausbauen: aktuell ${cnt} - Google erlaubt 1 Primaer + 9 Sekundaer`,
+      impact: 100 - m["Kategorisierung"],
       detail:
-        "Eine keyword-optimierte Beschreibung mit Stadt, Stadtteil und Hauptleistungen verbessert das Ranking auf 'in meiner Naehe'-Suchen.",
+        "Jede passende Sekundaer-Kategorie macht dich fuer weitere Suchbegriffe sichtbar. Beispiel Friseur: Primaer 'Friseur', Sekundaer 'Damenfriseur', 'Herrenfriseur', 'Hochzeitsfriseur', 'Bart-Spezialist'.",
     });
   }
 
@@ -385,11 +393,11 @@ export default async (req) => {
           place.nationalPhoneNumber || place.internationalPhoneNumber || null,
         website: place.websiteUri || null,
         category: place.primaryTypeDisplayName?.text || place.primaryType || null,
+        categoryCount: (place.types || []).length,
         rating: place.rating ?? null,
         reviewCount: place.userRatingCount ?? 0,
         photoCount: (place.photos || []).length,
         hasOpeningHours: !!place.regularOpeningHours,
-        hasDescription: !!place.editorialSummary,
         googleMapsUri: place.googleMapsUri || null,
       },
       score: scored.total,

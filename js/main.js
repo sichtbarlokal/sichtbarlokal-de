@@ -196,7 +196,8 @@
     if (b.photoCount != null) badges.push(`<span class="badge badge-cyan">📸 ${b.photoCount} Fotos</span>`);
     if (b.hasOpeningHours) badges.push(`<span class="badge badge-green">✓ Öffnungszeiten</span>`);
     if (b.website) badges.push(`<span class="badge badge-green">✓ Website</span>`);
-    if (!b.hasDescription) badges.push(`<span class="badge badge-amber">⚠ Beschreibung fehlt</span>`);
+    if (b.categoryCount != null)
+      badges.push(`<span class="badge ${b.categoryCount >= 3 ? 'badge-green' : 'badge-amber'}">🏷️ ${b.categoryCount} Kategorie${b.categoryCount === 1 ? '' : 'n'}</span>`);
 
     const metricsHtml = Object.entries(r.metrics || {})
       .map(([k, v]) => buildMetric(k, v))
